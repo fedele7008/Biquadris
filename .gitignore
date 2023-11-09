@@ -1,3 +1,10 @@
 **/*.o
 **/*.d
 **/biquadris
+
+# Tag file created by `ctags -R` (vim extension)
+**/tags
+
+# Cscope file created by cscope vim extension
+**/cscope.*
+
