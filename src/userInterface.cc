@@ -308,3 +308,33 @@ int UserInterface::getHiScore() {
 std::string UserInterface::getMessage() const noexcept {
     return msg;
 }
+
+std::vector<Grid*> UserInterface::getGrids() {
+    return grid;
+}
+
+std::vector<std::pair<int, int>> UserInterface::getNextShape(int player) {
+    return games[player]->getNextShape();
+}
+
+int UserInterface::getCurrentPlayer() const noexcept {
+return current_player;
+}
+
+int UserInterface::getNextPlayer() const noexcept {
+int next_player = current_player;
+if (++next_player >= players) next_player = 0;
+return next_player;
+}
+
+int UserInterface::getLevel(int player) const noexcept {
+return games[player]->getNextLevel();
+}
+
+int UserInterface::getScore(int player) const noexcept {
+return games[player]->getScore();
+}
+
+Block* UserInterface::getNextBlock(int player) {
+    return games[player]->getNextBlock();
+}

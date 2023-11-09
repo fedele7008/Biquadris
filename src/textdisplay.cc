@@ -47,7 +47,7 @@ void TextDisplay::updateGame() {
     auto grids = ui->getGrids();
     BlockShapeUtil util;
 
-    // player 0
+    // player 1
     for (int row = 0; row < ui->getGrids()[0]->getHeight(); row++) {
         for (int col = 0; col < ui->getGrids()[0]->getWidth(); col++) {
             if (ui->getGrids()[0]->getBoard(row, col) == nullptr) {
@@ -58,9 +58,7 @@ void TextDisplay::updateGame() {
         }
     }
 
-    // player 0's next block
-
-    // player 1
+    // player 2
     for (int row = 0; row < ui->getGrids()[1]->getHeight(); row++) {
         for (int col = 0; col < ui->getGrids()[1]->getWidth(); col++) {
             if (ui->getGrids()[1]->getBoard(row, col) == nullptr) {
@@ -71,15 +69,12 @@ void TextDisplay::updateGame() {
         }
     }
 
-    // player 1's next block
-
 }
 
 
 
 void TextDisplay::update(Tetris &whoNotified, Action action) {
 }
-
 
 void TextDisplay::update(UserInterface &whoNotified, Action action) {
     auto grids = whoNotified.getGrids();
@@ -204,4 +199,3 @@ std::ostream &operator<<(std::ostream &out, const TextDisplay &td) {
     }
     return out;
 }
-

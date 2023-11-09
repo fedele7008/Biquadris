@@ -16,7 +16,7 @@ class Xwindow {
     Window w;
     int s;
     GC gc;
-    unsigned long colours[14];
+    unsigned long colours[15];
     int width, height;
 
 public:
@@ -31,7 +31,6 @@ public:
 
     // Draws a string
     void drawString(int x, int y, std::string msg);
-
 
 };
 

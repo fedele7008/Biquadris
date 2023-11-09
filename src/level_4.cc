@@ -11,6 +11,7 @@ Level_4::Level_4(const std::string &standard_sequence_file, int seed) :
     #include <iostream>
     std::cout << "Level_4 Constructor" << std::endl;
 #endif
+    if (seed != -1) srand(seed);
 }
 
 BlockShape Level_4::getNextBlock() {
@@ -24,7 +25,7 @@ BlockShape Level_4::getNextBlock() {
                                                    BlockShape::Z, // 2 Z
                                                    BlockShape::Z,
                                                    BlockShape::T}; // 1 T
-        if (seed != -1) srand(seed);
+
         int idx = std::rand() % shapeWeightList.size();
         return shapeWeightList[idx];
     } else {
@@ -96,50 +97,3 @@ void Level_4::action_counter_clockwise(Tetris *tetris) {
     }
 }
 
-
-
-#if 0
-#include <vector>
-#include <iostream>
-#include <fstream>
-#include <string>
-#include <cstdlib>
-
-#include "blockShape.h"
-#include "level_4.h"
-
-Level_4::Level_4(std::string file, bool rand) :
-Level{4, file, rand} {}
-
-int Level_4::getTinyCounter() { return tiny_counter; }
-
-BlockShape Level_4::getNextBlock() override {
-int index = -1;
-if (rand) {
-blktype.clear();
-blktype = {'S', 'Z', 'I', 'J', 'L', 'O', 'S', 'Z', 'T'};
-int index = rand() % blktype.size();
-} else {
-readFile();
-}
-
-if (index != -1) counter = index;
-
-int length = blkseq.size();
-char target = blktype[counter++];
-if (counter >= length) counter = 0;
-
-++tiny_counter; /////////////////// maybe
-
-BlockShapeUtil *util = new BlockShapeUtil{};
-BlockShape ret;
-try {
-ret = util->to_block_shape(target);
-}
-catch (InvalidArgumentException &e) {
-throw e;
-}
-// TODO: we want to deliver that this block needs to be heavy
-return ret;
-}
-#endif

@@ -37,37 +37,3 @@ public:
 };
 
 #endif
-
-#if 0
-
-#ifndef __LEVEL_H__
-#define __LEVEL_H__
-
-#include <vector>
-#include <stdexcept>
-
-class BlockShape;
-
-class Level {
-protected:
-    int level;
-    std::string filename;
-    bool rand;
-
-    std::vector<char> blkseq;
-
-public:
-    virtual Level(int level, std::string file = "", bool rand = false);
-    virtual BlockShape getNextBlock () = 0;
-    void readFile();
-    virtual ~Level();
-};
-
-class InvalidArgumentException : public std::exception {
-public:
-    // CONSTRUCTOR: InvalidArgumentException
-    explicit InvalidArgumentException() = default;
-};
-
-#endif
-#endif

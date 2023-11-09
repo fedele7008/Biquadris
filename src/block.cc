@@ -21,9 +21,9 @@ level{level} {
 // NOTE:
 //    DO NOT delete board
 Block::~Block() {
-	board = nullptr;
+    board = nullptr;
 #if DEBUG_LEVEL > 0
-        #include <iostream>
+    #include <iostream>
     std::cout << "Block Destructor" << std::endl;
 #endif
 }

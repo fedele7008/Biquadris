@@ -29,24 +29,3 @@ public:
 };
 
 #endif
-
-#if 0
-#ifndef __LEVEL_1_H__
-#define __LEVEL_1_H__
-
-#include <vector>
-#include <iostream>
-#include <fstream>
-#include <string>
-
-#include "level.h"
-
-class Level_1 : public Level {
-    int counter = 0;
-public:
-    Level_1(std::string file, bool rand);
-    Blockshape getNextBlock() override;
-};
-
-#endif
-#endif

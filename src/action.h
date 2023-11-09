@@ -1,5 +1,5 @@
-#ifndef TEST4_ACTION_H
-#define TEST4_ACTION_H
+#ifndef __ACTION_H__
+#define __ACTION_H__
 
 #ifndef DEBUG_LEVEL
 #define DEBUG_LEVEL 0
@@ -13,4 +13,4 @@ enum class Action {
     score
 };
 
-#endif //TEST4_ACTION_H
+#endif

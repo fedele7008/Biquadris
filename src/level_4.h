@@ -30,27 +30,3 @@ public:
 };
 
 #endif
-
-#if 0
-#ifndef __LEVEL_4_H__
-#define __LEVEL_4_H__
-
-#include <vector>
-#include <iostream>
-#include <fstream>
-#include <string>
-
-#include "level.h"
-
-class Level_4 : public Level {
-    int counter = 0;
-    int tiny_counter = 0; // for * block
-public:
-    Level_4(std::string file, bool rand);
-    BlockShape getNextBlock() override;
-
-    int getTinyCounter();
-};
-
-#endif
-#endif

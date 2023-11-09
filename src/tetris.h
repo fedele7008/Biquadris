@@ -49,7 +49,7 @@ class Tetris : public TetrisAbstract {
     void updateBlock();
 public:
 
-    explicit Tetris(std::string standard_sequence, int seed, int initial_level = 0, int width = 11, int height = 18, int reserved = 3);
+    explicit Tetris(std::string standard_sequence, int seed,int initial_level = 0, int width = 11, int height = 18, int reserved = 3);
     virtual ~Tetris();
 
     Block *get_current_block() const noexcept;
@@ -90,55 +90,9 @@ public:
 
     bool isHeavy() override;
 
-    std::vector<std::pair<int,int>> getNextShape() override {
-        return next_block->getShape();
-    }
+    std::vector<std::pair<int,int>> getNextShape() override;
 
-    Block *getNextBlock() override {
-        return next_block;
-    }
-
-    void printGrid() {
-        BlockShapeUtil util;
-        std::cout << "Level:" << std::setfill(' ') << std::setw(5) << next_level << std::endl;
-        std::cout << "Score:" << std::setfill(' ') << std::setw(5) << score << std::endl;
-        for (int col = 0; col < grid->getWidth(); col++) {
-            std::cout << "-";
-        }
-        std::cout << std::endl;
-        for (int row = 0; row < grid->getHeight(); row++) {
-            for (int col = 0; col < grid->getWidth(); col++) {
-                if (grid->getBoard(row,col) == nullptr) {
-                    std::cout << ".";
-                } else {
-                    std::cout << util.to_char(grid->getBoard(row,col)->getType());
-                }
-            }
-            std::cout << std::endl;
-        }
-        for (int col = 0; col < grid->getWidth(); col++) {
-            std::cout << "-";
-        }
-        std::cout << "\nNext:" <<std::endl;
-        auto shape = next_block->getShape();
-        for (int row = 1; row >= 0; row--) {
-            for (int col = 0; col < grid->getWidth(); col++) {
-                bool found = false;
-                for (int i = 0; i < shape.size(); i++) {
-                    if (shape[i].first == row && shape[i].second == col) {
-                        found = true;
-                    }
-                }
-                if (found) {
-                    std::cout << util.to_char(next_block->getType());
-                } else {
-                    std::cout << " ";
-                }
-            }
-            std::cout << std::endl;
-        }
-        std::cout << std::endl;
-    }
+    Block *getNextBlock() override;
 
     bool isOver() override;
 };

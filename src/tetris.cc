@@ -43,7 +43,6 @@ seed{seed} {
 
 void Tetris::gameOver() {
     game_over = true;
-    // TODO: notify the observers
     std::cout << "game over" << std::endl;
 }
 
@@ -261,13 +260,7 @@ void Tetris::changeCurrentBlock(BlockShape type) {
             }
         }
     }
-//    for (int i = 0; i < blocks.size(); i++) {
-//        if (blocks[i] == current_block) {
-//            blocks.erase(blocks.begin() + i);
-//            break;
-//        }
-//    }
-//    delete current_block;
+
     current_block = dispenser[type]->getBlock(current_level);
     blocks.push_back(current_block);
     bool is_game_over = current_block->placeAt(reserved, 0);
@@ -282,4 +275,12 @@ bool Tetris::isHeavy() {
 
 bool Tetris::isOver() {
     return game_over;
+}
+
+std::vector<std::pair<int,int>> Tetris::getNextShape() {
+    return next_block->getShape();
+}
+
+Block *Tetris::getNextBlock() {
+    return next_block;
 }

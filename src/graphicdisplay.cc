@@ -58,11 +58,7 @@ void GraphicDisplay::setup() {
     xw->drawString(70, 60, score_0); // init score
     xw->drawString(165, 45, "NEXT: "); // next
     xw->fillRectangle(b_width - 130, 7.5, 130, 70, Color::DimGray);
-    // sample next
-    //xw->fillRectangle(205, 10 + blk_length, blk, blk, Color::Blue); // bottom-left
-    //xw->fillRectangle(205 + (blk_length * 1), 10 + blk_length, blk, blk, Color::Blue);
-    //xw->fillRectangle(205 + (blk_length * 2), 10 + blk_length, blk, blk, Color::Blue);
-    //xw->fillRectangle(205 + (blk_length * 3), 10 + blk_length, blk, blk, Color::Blue);
+
 
 
     // PLAYER 1
@@ -70,19 +66,12 @@ void GraphicDisplay::setup() {
     xw->fillRectangle(width - s_width - 5, 5, s_width, s_height, Color::WhiteSmoke); // level, score, next
     xw->drawString(width - s_width + 20, 30, "LEVEL: "); // level
     std::string level_1 = std::to_string(ui->getLevel(1));
-    xw->drawString(width - s_width + 60, 30, level_1); // sample level
+    xw->drawString(width - s_width + 60, 30, level_1); // init level
     xw->drawString(width - s_width + 20, 60, "SCORE: "); // score
     std::string score_1 = std::to_string(ui->getScore(1));
-    xw->drawString(width - s_width + 60, 60, score_1); // sample score
+    xw->drawString(width - s_width + 60, 60, score_1); // init score
     xw->drawString(725, 45, "NEXT: "); // next
     xw->fillRectangle(width - b_width + 130 + 60, 7.5, 130, 70, Color::DimGray);
-    // sample next
-    // xw->fillRectangle(765, 10 + blk_length, blk, blk, Color::Maroon); // bottom left
-    //xw->fillRectangle(765 + blk_length, 10 + blk_length, blk, blk, Color::Maroon);
-    //xw->fillRectangle(765 + (blk_length * 2), 10 + blk_length, blk, blk, Color::Maroon);
-    //xw->fillRectangle(765 + blk_length, 10, blk, blk, Color::Maroon);
-    //xw->fillRectangle(765, 10, blk, blk, Color::Maroon);
-
 
     // Hi Score
     xw->fillRectangle(s_width + 10,5, hi_width, hi_height, Color::WhiteSmoke);
@@ -97,21 +86,24 @@ void GraphicDisplay::setup() {
 
     // Command
     xw->fillRectangle(b_width + 10, 90 + msg_height, c_width, c_height, Color::White);
-    xw->drawString(b_width + 20, 170 + (msg_height / 2), "Command List");
-    xw->drawString(b_width + 20, 170 + (msg_height / 2) + 30, "Movement commands can take");
 
-    xw->drawString(b_width + 20, 170 + (msg_height / 2) + (30 * 2), "!#@!#!");
-    xw->drawString(b_width + 20, 170 + (msg_height / 2) + (30 * 3), "left");
+    xw->drawString(b_width + 20, 170 + (msg_height / 2) + (30 * 0), "Command List");
+    xw->drawString(b_width + 20, 170 + (msg_height / 2) + (30 * 1), "Movement commands can take");
+    xw->drawString(b_width + 20, 170 + (msg_height / 2) + (30 * 2), "         multipliers from 0 to 9.");
+    xw->drawString(b_width + 20, 170 + (msg_height / 2) + (30 * 3), "left <- le, lef......");
+    xw->drawString(b_width + 20, 170 + (msg_height / 2) + (30 * 4), "right <- ri, rig......");
+    xw->drawString(b_width + 20, 170 + (msg_height / 2) + (30 * 5), "down");
+    xw->drawString(b_width + 20, 170 + (msg_height / 2) + (30 * 6), "drop");
+    xw->drawString(b_width + 20, 170 + (msg_height / 2) + (30 * 7), "clockwise");
+    xw->drawString(b_width + 20, 170 + (msg_height / 2) + (30 * 8), "counterclockwise");
+    xw->drawString(b_width + 20, 170 + (msg_height / 2) + (30 * 9), "restart");
+    xw->drawString(b_width + 20, 170 + (msg_height / 2) + (30 * 10), "levelup");
+    xw->drawString(b_width + 20, 170 + (msg_height / 2) + (30 * 11), "leveldown");
 
-    // SAMPLE BLK on P1 Board
-    //xw->fillRectangle(5, 85, blk, blk, Color::Red);
-    //xw->fillRectangle(5, 85 + blk_length, blk, blk, Color::Red);
-    //xw->fillRectangle(5 + blk_length, 85, blk, blk, Color::Red);
 
 
-    // SAMPLE BLK on P2 Board
-    //xw->fillRectangle(width - b_width - space, 85, blk, blk, Color::Purple);
-    //xw->fillRectangle(width - b_width - space + blk_length, 85, blk, blk, Color::Purple);
+
+
 }
 
 void GraphicDisplay::updatep0(bool level) {
@@ -119,8 +111,6 @@ void GraphicDisplay::updatep0(bool level) {
     if (level) {
         xw->fillRectangle(5, 5, 140, s_height, Color::WhiteSmoke); //  level, score, next
         xw->drawString(30, 30, "LEVEL: "); // Level
-
-        //xw->fillRectangle(70, 30, 50, 40, Color::WhiteSmoke);
 
         std::string level_0 = std::to_string(ui->getLevel(0));
 
@@ -297,7 +287,7 @@ void GraphicDisplay::update(UserInterface& WhoNotified, Action action) {
             updatep1(false);
             updatep1(true);
         }
-            /// Blind ///
+        // Blind
         else if (action == Action::blind) {
             for (int i = 0; i < blindList.size(); ++i) {
                 for (int row = 0; row < ui->getGrids()[blindList[i]]->getHeight(); row++) {
@@ -352,9 +342,3 @@ void GraphicDisplay::update(UserInterface& WhoNotified, Action action) {
         }
     }
 }
-
-
-
-
-
-

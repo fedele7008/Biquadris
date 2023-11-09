@@ -68,35 +68,19 @@ public:
 
     void restart();
 
-    std::vector<Grid*> getGrids() {
-        return grid;
-    }
+    std::vector<Grid*> getGrids();
 
-    std::vector<std::pair<int, int>> getNextShape(int player) {
-        return games[player]->getNextShape();
-    }
+    std::vector<std::pair<int, int>> getNextShape(int player);
 
-    int getCurrentPlayer() const noexcept {
-        return current_player;
-    }
+    int getCurrentPlayer() const noexcept;
 
-    int getNextPlayer() const noexcept {
-        int next_player = current_player;
-        if (++next_player >= players) next_player = 0;
-        return next_player;
-    }
+    int getNextPlayer() const noexcept;
 
-    int getLevel(int player) const noexcept {
-        return games[player]->getNextLevel();
-    }
+    int getLevel(int player) const noexcept;
 
-    int getScore(int player) const noexcept {
-        return games[player]->getScore();
-    }
+    int getScore(int player) const noexcept;
 
-    Block* getNextBlock(int player) {
-        return games[player]->getNextBlock();
-    }
+    Block* getNextBlock(int player);
 
     int getHiScore();
 
@@ -111,5 +95,4 @@ public:
 };
 
 #endif
-
 

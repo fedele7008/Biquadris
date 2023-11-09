@@ -35,9 +35,6 @@ int main(int argc, char *argv[]) {
             // possible exceptions?
             // srand(seed);
         } else if (cmd == "-scriptfile1") {
-            // TODO: check if ++i is even valid by using argc
-            // we need to make sure ++i is valid and it is what we want
-            // (i.e., -scriptfile1 -scriptfile2 xxx2.txt makes ++i valid but option is not?)
             if (i + 1 < argc) {
                 file_1 = argv[++i];
             }
@@ -53,12 +50,9 @@ int main(int argc, char *argv[]) {
                 std::cerr << err.what() << std::endl;
             }
         } else {
-            // Not Valid command line?
         }
         ++i;
     }
-
-
 
     Terminal *biquadris = new Terminal{file_1, file_2, seed, level, graphic};
 
@@ -163,9 +157,7 @@ int main(int argc, char *argv[]) {
             continue;
         }
     }
-
     delete biquadris;
-
 }
 
 
