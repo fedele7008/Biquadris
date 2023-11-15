@@ -8,3 +8,6 @@
 # Cscope file created by cscope vim extension
 **/cscope.*
 
+# build file
+build/
+
